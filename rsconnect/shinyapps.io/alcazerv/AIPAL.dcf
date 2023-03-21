@@ -1,0 +1,14 @@
+name: AIPAL
+title: AIPAL
+username:
+account: alcazerv
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6632196
+bundleId: 6419511
+url: https://alcazerv.shinyapps.io/AIPAL/
+when: 1666194253.87164
+lastSyncTime: 1666194253.87164
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: tests/testthat/test-golem_utils_server.R|tests/testthat/test-golem_utils_ui.R|tests/testthat.R
