@@ -2,10 +2,14 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # AIPAL: Artificial Intelligence-based Prediction of Acute Leukemia
+https://www.thelancet.com/journals/landig/article/PIIS2589-7500(24)00044-X/fulltext
 
-**A machine-learning model based on simple laboratory parameters for the
-prediction of acute leukaemia subtypes: a multicentre model development
-and validation study**
+
+**Evaluation of a machine-learning model based on laboratory parameters 
+for the prediction of acute leukaemia subtypes: a multicentre model development 
+and validation study in France**
+
+Lancet Digit Health. 2024 May;6(5):e323-e333. PMID: 38670741 DOI: 10.1016/S2589-7500(24)00044-X 
 
 *Vincent Alcazer, Grégoire Le Meur, Marie Roccon, Sabrina Barriere,
 Baptiste Le Calvez, Bouchra Badaoui, Agathe Spaeth, Olivier Kosmider,
