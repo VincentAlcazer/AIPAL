@@ -15,9 +15,18 @@ mod_prediction_ui <- function(id){
       column(12,
 
              h1("Welcome to AI-PAL"),
+             p("AI-PAL (Artificial Intelligence-based Prediction of Acute Leukemia) is a free and open-source software
+             designed to assist clinical hematologists and biologists in diagnosing the three main subtypes of acute leukemia using only routine biological parameters.
+               The model has been trained and validated on more than 1,400 patients."),
+             p("AI-PAL is provided for research use only.
+    Diagnosis or clinical decisions made based on AI-PAL predictions are solely the responsibility of the user."),
+             HTML(
+               '<i>Lancet Digit Health. 2024 May;6(5):e323-e333.
+  PMID: 38670741
+  DOI: <a href="https://doi.org/10.1016/S2589-7500(24)00044-X" target="_blank">10.1016/S2589-7500(24)00044-X</a>,
+  <a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(24)00044-X/fulltext" target="_blank">Read the full text</a></i>'
+             ),
 
-             p("Artificial Intelligence-based Prediction of Acute Leukemia"),
-             br(),
 
              htmlOutput(ns("prediction_text"),style = "font-size:120%;"),
 
@@ -27,6 +36,7 @@ mod_prediction_ui <- function(id){
                    (including: training (n=477), testing (n=202) and
                    validation (n=731) sets).
                    "),
+                 checkboxInput(ns("hide_train"), label = "Hide training set", value = F),
                  shinycssloaders::withSpinner(plotOutput(ns("prediction")),type = 6)),
 
              box(width=6, title  = "Individual scores", collapsible = T,
@@ -128,9 +138,16 @@ mod_prediction_server <- function(id, r){
 
       req(prediction())
 
-      dat <- rbind(cbind(Response = "Prediction",
-                         prediction()),
-                         overall_pred[,-1])
+      if(input$hide_train == F){
+        dat <- rbind(cbind(Response = "Prediction",
+                           prediction()),
+                     overall_pred[,-1])
+
+      } else {
+        dat <- rbind(cbind(Response = "Prediction",
+                           prediction()),
+                     overall_pred %>% filter(data != "train") %>% select(-1))
+      }
 
       return(dat)
 

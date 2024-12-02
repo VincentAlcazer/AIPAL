@@ -13,17 +13,30 @@ app_ui <- function(request) {
     dashboardPage(
 
       header = dashboardHeader(
-        title = "AI-PAL v0.3",
-        tags$li(class = "dropdown",
-                shinyWidgets::dropMenu(
-                  shinyWidgets::dropdownButton("Info", status = 'success', icon = icon('info')),
-                  h3(strong('Information')),
-                  br(),
-                  h5('This is really helpful'),
-                  textInput('text', 'You can also put UI elements here'),
-                  placement = "bottom",
-                  arrow = TRUE)
-
+        title = "AI-PAL v1.1",
+        tags$li(
+          class = "dropdown",
+          shinyWidgets::dropMenu(
+            shinyWidgets::dropdownButton(
+              label = "Info",
+              status = "success",
+              icon = icon("info")
+            ),
+            h3(strong("Reference")),
+            br(),
+            h4(strong("Evaluation of a machine-learning model based on laboratory parameters for
+                  the prediction of acute leukaemia subtypes: a multicentre model development and validation study in France")),
+            br(),
+            p("Vincent Alcazer, Grégoire Le Meur, Marie Roccon, Sabrina Barriere, Baptiste Le Calvez, Bouchra Badaoui, Agathe Spaeth, Olivier Kosmider, Nicolas Freynet, Marion Eveillard5, Carolyne Croizier, Simon Chevalier, Pierre Sujobert"),
+            br(),
+            p(HTML('Lancet Digit Health. 2024 May;6(5):e323-e333.
+        PMID: 38670741
+        DOI: <a href="https://doi.org/10.1016/S2589-7500(24)00044-X" target="_blank">10.1016/S2589-7500(24)00044-X</a>,
+        <a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(24)00044-X/fulltext" target="_blank">Read the full text</a>')
+          ),
+             placement = "bottom",
+            arrow = TRUE
+          )
         )
       ),
 

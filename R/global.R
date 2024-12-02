@@ -12,6 +12,7 @@
 #' @import rmarkdown
 #' @import caret
 #' @import xgboost
+#' @import shinyalert
 
 
 ########## ========== Parameters

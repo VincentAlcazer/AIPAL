@@ -6,6 +6,28 @@
 #' @noRd
 app_server <- function(input, output, session) {
 
+  shinyalert(
+    title = "Disclaimer",
+    text = HTML('AI-PAL is provided for research use only.
+    Diagnosis or clinical decisions made based on AI-PAL predictions are solely the responsibility of the user.
+    </br>
+    The model has been trained and validated on over 1,400 patients and published in
+      <b>Lancet Digital Health</b> (2024 May;6(5):e323-e333).
+      </br>
+      PMID: 38670741
+      DOI: <a href="https://doi.org/10.1016/S2589-7500(24)00044-X" target="_blank">10.1016/S2589-7500(24)00044-X</a>,
+      <a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(24)00044-X/fulltext" target="_blank">Read the full text</a>'
+    ),
+    html = T,
+    type = "warning",
+    closeOnEsc = TRUE,
+    closeOnClickOutside = TRUE,
+    showConfirmButton = TRUE,
+    confirmButtonText = "I Understand"
+  )
+
+
+
   #################### ==================== Data loading  ====================  ####################
   r <- reactiveValues(
     test = reactiveValues()
