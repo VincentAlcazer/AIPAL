@@ -13,6 +13,7 @@
 #' @import caret
 #' @import xgboost
 #' @import shinyalert
+#' @importFrom uwot umap umap_transform
 
 
 ########## ========== Parameters
@@ -77,6 +78,19 @@ pca_plot <- pca$x[,1:2] %>% data.frame(check.names = F) %>%
   geom_density_2d(aes(color = ..level..),size=1.5, bins = 25, alpha = 0.75) +
   MetBrewer::scale_color_met_c("Hiroshige", direction = -1) +
   labs(title = "Density plot - training data")
+
+### === Training data UMAP
+## Fit UMAP model on the training data for later projections
+umap_training <- umap(as.matrix(training_data[,-1]), ret_model = TRUE)
+umap_model <- umap_training$model
+
+## Base UMAP plot of training data
+umap_plot <- umap_training$embedding %>%
+  data.frame(check.names = FALSE) %>%
+  setNames(c("UMAP1", "UMAP2")) %>%
+  ggplot(aes(x = UMAP1, y = UMAP2)) +
+  geom_point(alpha = 0.3) +
+  labs(title = "UMAP projection - training data")
 
 
 ########## ========== Parameters
