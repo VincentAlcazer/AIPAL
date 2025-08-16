@@ -47,9 +47,6 @@ mod_prediction_ui <- function(id){
              box(width=6, title = "Outlier detection", collapsible = T,
                  shinycssloaders::withSpinner(plotOutput(ns("density_plot")),type = 6)),
 
-             box(width=6, title = "UMAP projection", collapsible = T,
-                 shinycssloaders::withSpinner(plotOutput(ns("projection_plot")), type = 6)),
-
              box(width=6, title  = "Preview", collapsible = T,
                  shinycssloaders::withSpinner(DT::DTOutput(ns("preview")),type = 6))
 
@@ -109,25 +106,12 @@ mod_prediction_server <- function(id, r){
 
     })
 
-    newdata_umap <- reactive({
-      req(newdata())
-      umap_transform(X = as.matrix(newdata()), model = umap_model)
-    })
-
     output$density_plot <- renderPlot({
       req(newdata())
       pca_plot +
           geom_point(aes(x = newdata_pc()[1], y = newdata_pc()[2], size = 10)) +
           default_theme
 
-
-    })
-
-    output$projection_plot <- renderPlot({
-      req(newdata_umap())
-      umap_plot +
-        geom_point(aes(x = newdata_umap()[,1], y = newdata_umap()[,2], size = 10)) +
-        default_theme
 
     })
 
